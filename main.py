@@ -1,4 +1,5 @@
 import fastapi
+from aiotube import Channel
 
 
 app = fastapi.FastAPI()
@@ -6,4 +7,4 @@ app = fastapi.FastAPI()
 
 @app.get("/")
 def root():
-    return {"message": "Hello World"}
+    return {"message": Channel('GYROOO').info}
