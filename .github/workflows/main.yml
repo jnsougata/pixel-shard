@@ -10,3 +10,4 @@ jobs:
         with:
           deta-access-token: ${{ secrets.DETA_TOKEN }}
           deta-name: 'shard-zero'
+          deta-project: 'default'
