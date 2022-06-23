@@ -27,3 +27,5 @@ async def info(id: str = None):
             payload['stream'] = {'id': stream_id, 'url': stream_url}
 
         return payload
+
+#gg
