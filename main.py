@@ -6,6 +6,11 @@ from fastapi.responses import JSONResponse
 app = FastAPI()
 
 
+@app.get("/")
+async def root():
+    return JSONResponse({"message": "Hello World"})
+
+
 @app.get("/ch/{channel_id}")
 async def info(channel_id: str = None):
     if channel_id:
