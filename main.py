@@ -1,25 +1,25 @@
-import fastapi
 from aiotube import Channel
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 
 
-app = fastapi.FastAPI()
+app = FastAPI()
 
 
-@app.get("/ch/{id}")
-async def info(id: str = None):
-    if id:
-        channel = Channel(id)
-        payload = {'info': channel.info}
-        upload = channel.recent_uploaded
-        if upload:
-            latest_url = upload.url
-            latest_id = latest_url.split('=')[-1]
-            payload['latest'] = {'id': latest_id, 'url': latest_url}
-
-        stream = channel.livestream
-        if stream:
-            stream_url = stream.url
-            stream_id = stream_url.split('=')[-1]
-            payload['stream'] = {'id': stream_id, 'url': stream_url}
-
-        return payload
+@app.get("/ch/{channel_id}")
+async def info(channel_id: str = None):
+    if channel_id:
+        try:
+            channel = Channel(channel_id)
+            data = channel.info
+            upload = channel.recent_uploaded
+            stream = channel.livestream
+            if upload:
+                data['latest'] = {'id': upload.id, 'url': upload.url}
+            if stream:
+                data['stream'] = {'id': stream.id, 'url': stream.url}
+        except Exception as e:
+            return JSONResponse({'error': str(e)}, status_code=404)
+        else:
+            return JSONResponse(data, status_code=200)
+    return JSONResponse({'error': 'channel_id is required'}, status_code=400)
