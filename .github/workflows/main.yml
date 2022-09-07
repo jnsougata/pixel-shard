@@ -11,3 +11,25 @@ jobs:
           deta-access-token: ${{ secrets.DETA_TOKEN }}
           deta-name: 'shard-zero'
           deta-project: 'default'
+
+  deploy_one:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: BogDAAAMN/deta-deploy-action@v1.0.1
+        with:
+          deta-access-token: ${{ secrets.DETA_TOKEN }}
+          deta-name: 'shard-one'
+          deta-project: 'default'
+
+  deploy_three:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: BogDAAAMN/deta-deploy-action@v1.0.1
+        with:
+          deta-access-token: ${{ secrets.DETA_TOKEN }}
+          deta-name: 'shard-three'
+          deta-project: 'default'
+
+
