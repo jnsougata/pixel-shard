@@ -9,11 +9,7 @@ app = fastapi.FastAPI()
 async def info(id: str = None):
     if id:
         channel = Channel(id)
-        payload = {
-            'latest': {},
-            'stream': {},
-            'info': channel.info
-        }
+        payload = {'info': channel.info}
         upload = channel.recent_uploaded
         if upload:
             latest_url = upload.url
@@ -27,5 +23,3 @@ async def info(id: str = None):
             payload['stream'] = {'id': stream_id, 'url': stream_url}
 
         return payload
-
-#gg
