@@ -1,1 +1,1 @@
-# shard-zero
+# pixel-shard
