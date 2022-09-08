@@ -17,8 +17,8 @@ async def info(channel_id: str = None):
         try:
             channel = Channel(channel_id)
             data = channel.info
-            upload = channel.recent_uploaded
             stream = channel.livestream
+            upload = channel.recent_uploaded
             if upload:
                 data['latest'] = {'id': upload.id, 'url': upload.url}
             if stream:
