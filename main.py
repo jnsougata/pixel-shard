@@ -20,9 +20,9 @@ async def info(channel_id: str = None):
             stream = channel.livestream
             upload = channel.recent_uploaded
             if upload:
-                data['latest'] = {'id': upload.id, 'url': upload.url}
+                data['upload'] = {'id': upload.id, 'url': upload.url}
             if stream:
-                data['stream'] = {'id': stream.id, 'url': stream.url}
+                data['live'] = {'id': stream.id, 'url': stream.url}
         except Exception as e:
             return JSONResponse({'error': str(e)}, status_code=404)
         else:
