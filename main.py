@@ -16,13 +16,13 @@ async def info(channel_id: str = None):
     if channel_id:
         try:
             channel = Channel(channel_id)
-            data = channel.info
-            stream = channel.livestream
-            upload = channel.recent_uploaded
-            if upload:
-                data['upload'] = {'id': upload.id, 'url': upload.url}
-            if stream:
-                data['live'] = {'id': stream.id, 'url': stream.url}
+            data = channel.metadata
+            stream_id = channel.streaming_now()
+            upload_id = channel.last_uploaded()
+            if upload_id:
+                data['upload'] = {'id': upload_id, 'url': f"https://www.youtube.com/watch?v={upload_id}"}
+            if stream_id:
+                data['live'] = {'id': stream_id, 'url': f"https://www.youtube.com/watch?v={stream_id}"}
         except Exception as e:
             return JSONResponse({'error': str(e)}, status_code=404)
         else:
