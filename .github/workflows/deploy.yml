@@ -1,0 +1,17 @@
+name: Deploy to Deta
+on:
+  [push, workflow_dispatch]:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - run: pip install git+git+https://github.com/jnsougata/deta_cli
+      - run: python deploy.py ${{ secrets.DETA_ACCESS_TOKEN }}
