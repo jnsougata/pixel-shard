@@ -14,4 +14,4 @@ jobs:
         with:
           python-version: '3.9'
       - run: pip install git+https://github.com/jnsougata/deta_cli
-      - run: python deploy.py ${{ secrets.DETA_ACCESS_TOKEN }}
+      - run: python deploy.py "test_abcx"
