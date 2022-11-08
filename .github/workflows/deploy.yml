@@ -2,8 +2,8 @@ name: Deploy to Deta
 on:
   - push:
   - workflow_dispatch:
-    branches:
-      - master
+      branches:
+        - master
 
 jobs:
   deploy:
