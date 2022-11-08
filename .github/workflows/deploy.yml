@@ -13,5 +13,5 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - run: pip install git+git+https://github.com/jnsougata/deta_cli
+      - run: pip install git+https://github.com/jnsougata/deta_cli
       - run: python deploy.py ${{ secrets.DETA_ACCESS_TOKEN }}
