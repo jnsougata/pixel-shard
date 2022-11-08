@@ -4,16 +4,16 @@ import deta_cli
 
 MICROS = [
     'shard-backup',
-    #'shard-zero',
-    #'shard-one',
-    #'shard-two',
-    #'shard-three',
-    #'shard-four',
-    #'shard-five',
-    #'shard-six',
-    #'shard-seven',
-    #'shard-eight',
-    #'shard-nine',
+    'shard-zero',
+    'shard-one',
+    'shard-two',
+    'shard-three',
+    'shard-four',
+    'shard-five',
+    'shard-six',
+    'shard-seven',
+    'shard-eight',
+    'shard-nine',
 ]
 
 def main():
@@ -27,6 +27,7 @@ def main():
         raise sys.exit(f'Error: Invalid Deta access key...')
     else:
         for name in MICROS:
+            sys.stdout.write(f'Deploying to micro: {name}...')
             try:
                 micro = client.get_micro(name)
                 micro.remove_deps(['aiotube', 'fastapi'])
