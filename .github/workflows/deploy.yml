@@ -1,4 +1,4 @@
-name: Deploy to Deta
+name: Deta Deploy Python
 on:
   - push:
       branches:
