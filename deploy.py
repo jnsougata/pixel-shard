@@ -29,8 +29,8 @@ def main():
         for name in MICROS:
             try:
                 micro = client.get_micro(name)
-                micro.remove_deps('aiotube', 'fastapi')
-                micro.add_deps('aiotube', 'fastapi')
+                micro.remove_deps(['aiotube', 'fastapi'])
+                micro.add_deps(['aiotube', 'fastapi'])
                 micro.deploy(scripts=['main.py', 'requirements.txt'])
                 sys.stdout.write(f'[SUCCESS] {name} deployed...')
             except Exception as e:
