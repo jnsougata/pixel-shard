@@ -35,7 +35,7 @@ def main():
                 sys.stdout.write(f'[SUCCESS] {name} deployed...')
             except Exception as e:
                 sys.stdout.write(f'[ERROR] {name} failed to deploy...')
-                sys.stdout.write(e)
+                sys.stdout.write(str(e))
 
     
 if __name__ == '__main__':
