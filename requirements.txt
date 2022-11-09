@@ -1,2 +1,3 @@
 fastapi
+xmltodict
 git+https://github.com/jnsougata/aiotube
