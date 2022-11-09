@@ -1,6 +1,6 @@
+from utils import feed
 from aiotube import Channel
 from fastapi import FastAPI
-from utils import feed
 from fastapi.responses import JSONResponse
 
 
@@ -29,6 +29,7 @@ async def info(channel_id: str = None):
         else:
             return JSONResponse(data, status_code=200)
     return JSONResponse({'error': 'channel_id is required'}, status_code=400)
+
 
 @app.get("/feed/{channel_id}")
 async def feed(channel_id: str):
