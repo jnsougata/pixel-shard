@@ -32,7 +32,7 @@ async def info(channel_id: str = None):
 
 
 @app.get("/feed/{channel_id}")
-async def feed(channel_id: str):
+async def serve_feed(channel_id: str):
     try:
         return feed(channel_id)
     except Exception as e:

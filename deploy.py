@@ -37,6 +37,6 @@ def main():
                 sys.stdout.write(f'[ERROR] {name} failed to deploy...')
                 sys.stdout.write(str(e))
 
-    
+
 if __name__ == '__main__':
     main()
