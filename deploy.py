@@ -3,15 +3,15 @@ import deta_cli
 
 
 MICROS = [
-    'shard-backup',
-    'shard-zero',
-    'shard-one',
-    'shard-two',
-    'shard-three',
-    'shard-four',
-    'shard-five',
-    'shard-six',
-    'shard-seven',
+    #'shard-backup',
+    #'shard-zero',
+    #'shard-one',
+    #'shard-two',
+    #'shard-three',
+    #'shard-four',
+    #'shard-five',
+    #'shard-six',
+    #'shard-seven',
     'shard-eight',
     'shard-nine',
 ]
@@ -30,6 +30,7 @@ def main():
             sys.stdout.write(f'Deploying to micro: {name}...')
             try:
                 micro = client.get_micro(name)
+                micro.remove_deps(['xmltodict', 'aiotube'])
                 micro.add_deps(['xmltodict', 'aiotube', 'fastapi'])
                 micro.deploy(scripts=['main.py', 'requirements.txt', 'utils.py'])
                 sys.stdout.write(f'[SUCCESS] {name} deployed...')
