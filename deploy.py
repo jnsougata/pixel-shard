@@ -30,8 +30,7 @@ def main():
             sys.stdout.write(f'Deploying to micro: {name}...')
             try:
                 micro = client.get_micro(name)
-                micro.remove_deps(['xmltodict', 'aiotube'])
-                micro.add_deps(['xmltodict', 'aiotube', 'fastapi'])
+                micro.add_deps(['xmltodict'])
                 micro.deploy(scripts=['main.py', 'requirements.txt', 'utils.py'])
                 sys.stdout.write(f'[SUCCESS] {name} deployed...')
             except Exception as e:
