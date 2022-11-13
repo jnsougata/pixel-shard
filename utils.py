@@ -23,14 +23,13 @@ def feed(channel_id: str) -> dict:
     current_video = data['entry'][0]
     video_id = current_video['yt:videoId']
     video_title = current_video['title']
-    video_url = current_video['link']['@href']
     video_published = current_video['published']
     return {
         'channel_name': channel_name,
         'channel_id': channel_id,
         'video_id': video_id,
         'video_title': video_title,
-        'video_url': video_url,
+        'video_url': f'https://youtu.be/{video_id}',
         'video_published': str(unix(video_published)),
     }
 
