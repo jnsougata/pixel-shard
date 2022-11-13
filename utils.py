@@ -4,7 +4,7 @@ from urllib.request import Request, urlopen
 
 
 def unix(stamp: str) -> int:
-    return int(datetime.strptime(stamp, '%Y-%m-%dT%H:%M:%S%z').timestamp())
+    return int(datetime.fromisoformat(stamp).timestamp())
 
 
 def feed(channel_id: str) -> dict:
