@@ -1,5 +1,10 @@
 import xmltodict
+from datetime import datetime
 from urllib.request import Request, urlopen
+
+
+def unix(stamp: str) -> int:
+    return int(datetime.strptime(stamp, '%Y-%m-%dT%H:%M:%S%z').timestamp())
 
 
 def feed(channel_id: str) -> dict:
@@ -26,7 +31,7 @@ def feed(channel_id: str) -> dict:
         'video_id': video_id,
         'video_title': video_title,
         'video_url': video_url,
-        'video_published': video_published
+        'video_published': str(unix(video_published)),
     }
 
 
