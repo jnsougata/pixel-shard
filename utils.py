@@ -1,9 +1,17 @@
 import xmltodict
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 
 def feed(channel_id: str) -> dict:
-    xml_data = urlopen(f'https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}').read()
+    req = Request(
+        f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}", 
+        headers={
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        },
+        method='GET'
+    )
+    xml_data = urlopen(req).read()
     data = xmltodict.parse(xml_data)['feed']
     channel_name = data['title']
     channel_id = data['yt:channelId']
@@ -23,4 +31,6 @@ def feed(channel_id: str) -> dict:
 
 
 if __name__ == '__main__':
-    print(feed('UCZHDG3CPvor560dYeOZAv9Q'))
+    # WION: UC_gUM8rL-Lrg6O3adPW9K1g
+    # UMIKO: UC5to_7NEfe5naCGOkVdqiUg
+    print(feed('UC_gUM8rL-Lrg6O3adPW9K1g'))
