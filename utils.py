@@ -32,9 +32,3 @@ def feed(channel_id: str) -> dict:
         'video_url': f'https://youtu.be/{video_id}',
         'video_published': str(unix(video_published)),
     }
-
-
-if __name__ == '__main__':
-    # WION: UC_gUM8rL-Lrg6O3adPW9K1g
-    # UMIKO: UC5to_7NEfe5naCGOkVdqiUg
-    print(feed('UC_gUM8rL-Lrg6O3adPW9K1g'))
